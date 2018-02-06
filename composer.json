@@ -1,0 +1,32 @@
+{
+  "name": "bytic/debug",
+  "type": "library",
+  "description": "Php Framework",
+  "homepage": "https://github.com/bytic/debug",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Nip\\Debug\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Nip\\Debug\\Tests\\": "tests/"
+    }
+  },
+  "require": {
+    "php": "^7.0",
+    "symfony/debug": "^3.4"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.0",
+    "phpunit/phpunit": "^6.2",
+    "mockery/mockery": "^0.9"
+  }
+}
