@@ -54,7 +54,7 @@ class Debug extends SymfonyDebug
             $handler->throwAt(0, true);
         }
 
-        app('container')->share(ErrorHandler::class, $handler);
+        app('container')->singleton(ErrorHandler::class, $handler);
 //        DebugClassLoader::enable();
     }
 }
