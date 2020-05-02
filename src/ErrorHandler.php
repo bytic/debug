@@ -2,7 +2,7 @@
 
 namespace Nip\Debug;
 
-use Symfony\Component\Debug\ErrorHandler as SymfonyErrorHandler;
+use Symfony\Component\ErrorHandler\ErrorHandler as SymfonyErrorHandler;
 
 /**
  * Class ErrorHandler
