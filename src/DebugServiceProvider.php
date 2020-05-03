@@ -20,7 +20,7 @@ class DebugServiceProvider extends AbstractSignatureServiceProvider implements B
      */
     public function provides()
     {
-        return ['debug', 'error-handler', ErrorHandler::class];
+        return [];
     }
 
     /**
@@ -28,8 +28,8 @@ class DebugServiceProvider extends AbstractSignatureServiceProvider implements B
      */
     public function register()
     {
-        $this->registerDebug();
-        $this->registerErrorHandler();
+//        $this->registerDebug();
+//        $this->registerErrorHandler();
     }
 
     public function registerDebug()
@@ -54,6 +54,6 @@ class DebugServiceProvider extends AbstractSignatureServiceProvider implements B
 
     public function boot()
     {
-        ErrorHandler::register($this->getContainer()->get(ErrorHandler::class), true);
+//        ErrorHandler::register($this->getContainer()->get(ErrorHandler::class), true);
     }
 }
