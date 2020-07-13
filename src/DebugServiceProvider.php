@@ -4,9 +4,9 @@ namespace Nip\Debug;
 
 use Nip\Container\ServiceProviders\Providers\AbstractSignatureServiceProvider;
 use Nip\Container\ServiceProviders\Providers\BootableServiceProviderInterface;
+use Symfony\Component\ErrorHandler\ErrorHandler;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\ErrorHandler\BufferingLogger;
-use Nip\Debug\ErrorHandler;
 
 /**
  * Class LoggerServiceProvider
@@ -20,7 +20,7 @@ class DebugServiceProvider extends AbstractSignatureServiceProvider implements B
      */
     public function provides()
     {
-        return [];
+        return ['error-handler', ErrorHandler::class, \Nip\Debug\ErrorHandler::class];
     }
 
     /**
@@ -28,8 +28,8 @@ class DebugServiceProvider extends AbstractSignatureServiceProvider implements B
      */
     public function register()
     {
-//        $this->registerDebug();
-//        $this->registerErrorHandler();
+        $this->registerDebug();
+        $this->registerErrorHandler();
     }
 
     public function registerDebug()
@@ -42,18 +42,21 @@ class DebugServiceProvider extends AbstractSignatureServiceProvider implements B
     public function registerErrorHandler()
     {
         $this->getContainer()->share('error-handler', function () {
-            $logger = $this->getContainer()->has(LoggerInterface::class)
-                ? $this->getContainer()->get(LoggerInterface::class)
-                : new BufferingLogger();
+            $logger =
+//                $this->getContainer()->has(LoggerInterface::class)
+//                ? $this->getContainer()->get(LoggerInterface::class)
+//                :
+                    new BufferingLogger();
 
             return new ErrorHandler($logger);
         });
 
         $this->getContainer()->alias('error-handler', ErrorHandler::class);
+        $this->getContainer()->alias('error-handler', \Nip\Debug\ErrorHandler::class);
     }
 
     public function boot()
     {
-//        ErrorHandler::register($this->getContainer()->get(ErrorHandler::class), true);
+        ErrorHandler::register($this->getContainer()->get(ErrorHandler::class), true);
     }
 }
