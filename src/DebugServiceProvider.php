@@ -42,13 +42,7 @@ class DebugServiceProvider extends AbstractSignatureServiceProvider implements B
     public function registerErrorHandler()
     {
         $this->getContainer()->share('error-handler', function () {
-            $logger =
-//                $this->getContainer()->has(LoggerInterface::class)
-//                ? $this->getContainer()->get(LoggerInterface::class)
-//                :
-                    new BufferingLogger();
-
-            return new ErrorHandler($logger);
+            return \Symfony\Component\ErrorHandler\ErrorHandler::register(null, false);
         });
 
         $this->getContainer()->alias('error-handler', ErrorHandler::class);
