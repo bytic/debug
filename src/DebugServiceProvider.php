@@ -4,7 +4,7 @@ namespace Nip\Debug;
 
 use Nip\Container\ServiceProviders\Providers\AbstractSignatureServiceProvider;
 use Nip\Container\ServiceProviders\Providers\BootableServiceProviderInterface;
-use Symfony\Component\ErrorHandler\ErrorHandler;
+use Nip\Debug\ErrorHandler;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\ErrorHandler\BufferingLogger;
 
@@ -42,7 +42,7 @@ class DebugServiceProvider extends AbstractSignatureServiceProvider implements B
     public function registerErrorHandler()
     {
         $this->getContainer()->share('error-handler', function () {
-            return \Symfony\Component\ErrorHandler\ErrorHandler::register(null, false);
+            return ErrorHandler::register(null, false);
         });
 
         $this->getContainer()->alias('error-handler', ErrorHandler::class);
