@@ -23,7 +23,7 @@
   "require": {
     "php": "^7.0|^8.0",
     "bytic/package-base": "^1.0",
-    "symfony/error-handler": ">=5.0",
+    "symfony/error-handler": "^5.0|^6.0|^7.0",
     "filp/whoops": "^2.1"
   },
   "require-dev": {
