@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow,noarchive" />
+    <title>Something went wrong</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>❌</text></svg>" />
+    <style>
+        /* Modern, minimal error page styles */
+:root {
+  --bg: #ffffff;
+  --fg: #1f2328;
+  --muted: #6c757d;
+  --card: #ffffff;
+  --shadow: 0 8px 30px rgba(0,0,0,0.08);
+  --accent: #dc3545;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b0c0f;
+    --fg: #e6edf3;
+    --muted: #8b949e;
+    --card: #161b22;
+    --shadow: 0 8px 30px rgba(0,0,0,0.35);
+    --accent: #ff6b6b;
+  }
+}
+
+html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+}
+
+.error {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.card {
+  width: 100%;
+  max-width: 640px;
+  background: var(--card);
+  color: var(--fg);
+  border-radius: 12px;
+  padding: 24px 24px 18px;
+  box-shadow: var(--shadow);
+}
+
+.icon { color: var(--accent); margin-bottom: 12px; }
+
+h1 {
+  margin: 0 0 8px;
+  font-size: 22px;
+}
+
+.message {
+  margin: 0;
+  font-size: 16px;
+}
+
+.footnote {
+  margin: 18px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}    </style>
+
+</head>
+<body>
+<main class="error" role="main">
+    <div class="card" role="group" aria-labelledby="error-title">
+        <div class="icon" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="40" height="40" fill="currentColor">
+                <path d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 14h-2v-2h2Zm0-4h-2V6h2Z"/>
+            </svg>
+        </div>
+        <h1 id="error-title">Something went wrong</h1>
+        <p class="message">
+            Public safe message        </p>
+        <p class="footnote" aria-hidden="true">
+            If the problem persists, please contact support.
+        </p>
+    </div>
+</main>
+</body>
+</html>
