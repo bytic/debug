@@ -10,7 +10,7 @@ use Nip\Debug\ErrorHandler;
  * Class DebugServiceProviderTest
  * @package Nip\Debug\Tests
  */
-class DebugServiceProviderTest extends AbstractTest
+class DebugServiceProviderTest extends AbstractTestCase
 {
     public function test_registerDebug()
     {
