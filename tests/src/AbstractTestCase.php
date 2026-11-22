@@ -16,11 +16,42 @@ abstract class AbstractTestCase extends TestCase
      */
     protected $tester;
 
+    private $previousErrorHandler;
+
+    private $previousExceptionHandler;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->previousErrorHandler = set_error_handler(static fn() => false);
+        restore_error_handler();
+
+        $this->previousExceptionHandler = set_exception_handler(static fn() => null);
+        restore_exception_handler();
+    }
+
     protected function tearDown(): void
     {
-        parent::tearDown();
-
+        $this->restoreErrorHandler();
         $this->restoreExceptionHandler();
+
+        parent::tearDown();
+    }
+
+    protected function restoreErrorHandler(): void
+    {
+        while (true) {
+            $previousHandler = set_error_handler(static fn() => false);
+            restore_error_handler();
+
+            if ($previousHandler === $this->previousErrorHandler) {
+                break;
+            }
+
+            self::assertNotNull($previousHandler, 'The original error handler was removed.');
+            restore_error_handler();
+        }
     }
 
     protected function restoreExceptionHandler(): void
@@ -30,10 +61,11 @@ abstract class AbstractTestCase extends TestCase
 
             restore_exception_handler();
 
-            if ($previousHandler === null) {
+            if ($previousHandler === $this->previousExceptionHandler) {
                 break;
             }
 
+            self::assertNotNull($previousHandler, 'The original exception handler was removed.');
             restore_exception_handler();
         }
     }

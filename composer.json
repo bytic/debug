@@ -1,7 +1,7 @@
 {
   "name": "bytic/debug",
   "type": "library",
-  "description": "Php Framework",
+  "description": "ByTIC debugging and error handling built on Symfony",
   "homepage": "https://github.com/bytic/debug",
   "license": "MIT",
   "authors": [
@@ -24,20 +24,20 @@
     "php": "^8.0",
     "bytic/package-base": "^1.0",
     "bytic/utility": "^1.0|^2.0",
-    "symfony/error-handler": "^5.0|^6.0|^7.0",
+    "symfony/error-handler": "^5.0 || ^6.0 || ^7.0 || ^8.0",
     "filp/whoops": "^2.1"
   },
   "require-dev": {
-    "bytic/phpqatools": "^1.0|^2.0"
+    "phpunit/phpunit": "^9.6 || ^10.5 || ^11.5 || ^12.0",
+    "symfony/config": "^5.3 || ^6.0 || ^7.0 || ^8.0",
+    "symfony/dependency-injection": "^5.3 || ^6.0 || ^7.0 || ^8.0"
+  },
+  "suggest": {
+    "symfony/dependency-injection": "Load the optional Symfony service configuration (versions 5.3 through 8)."
+  },
+  "scripts": {
+    "test": "phpunit"
   },
   "prefer-stable": true,
-  "minimum-stability": "dev",
-  "config": {
-    "allow-plugins": {
-      "phpstan/extension-installer": true,
-      "ergebnis/composer-normalize": true,
-      "dealerdirect/phpcodesniffer-composer-installer": true,
-      "bytic/phpqatools": true
-    }
-  }
+  "minimum-stability": "dev"
 }
